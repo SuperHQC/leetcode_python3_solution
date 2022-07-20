@@ -10,14 +10,14 @@ class Solution:
         # sol1
         # time: O(n), space O(n)
 
-        # numDict = {}
-        # for i in range(len(nums)):
-        #     temp = nums[i]
-        #     if numDict.get(target - temp) is not None:
-        #         return [numDict[target - nums[i]], i]
-        #     else:
-        #         numDict[temp] = i
-
+        numDict = {}
+        for i in range(len(nums)):
+            temp = nums[i]
+            if numDict.get(target - temp) is not None:
+                return [numDict[target - nums[i]], i]
+            else:
+                numDict[temp] = i
+        
 
         # sol2
         # time: O(n^2), space O(1)
@@ -28,6 +28,8 @@ class Solution:
         #             continue
         #         if nums[i] + nums[j] == target:
         #             return [i, j]
+
+        return []
 
 
 # @lc code=end
