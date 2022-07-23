@@ -14,31 +14,25 @@ class Node:
 """
 
 
-from collections import deque
-
-
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
-        if not node:
-            return node
-        #BFS
-        nodeCp = Node(node.val, [])
-        queue = deque()
-        queue.append(node)
-        dic = {node: nodeCp}
-        
-        while queue:
-            node = queue.popleft()
-            for neighbor in node.neighbors:
-                if neighbor not in dic:
-                    neighborCp = Node(neighbor.val, [])
-                    dic[node].neighbors.append(neighborCp)
-                    queue.append(neighbor)
-                    dic[neighbor] = neighborCp
+        if not node: return node
+
+        nodeCopy = Node(node.val)
+        q = deque()
+        nodeMap = {node: nodeCopy}
+        q.append(node)
+        while q:
+            n = q.popleft()
+            for neighbor in n.neighbors:
+                if neighbor not in nodeMap:
+                    neighborCopy = Node(neighbor.val)
+                    q.append(neighbor)
+                    nodeMap[n].neighbors.append(neighborCopy)
+                    nodeMap[neighbor] = neighborCopy
                 else:
-                    dic[node].neighbors.append(dic[neighbor])
-        return nodeCp
-            
+                    nodeMap[n].neighbors.append(nodeMap[neighbor])
+        return nodeCopy
 
 
         
