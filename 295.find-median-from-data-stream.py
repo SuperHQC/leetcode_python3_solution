@@ -6,7 +6,7 @@
 
 # @lc code=start
 class MedianFinder:
-
+    
     def __init__(self):
         self.minheap = []
         self.maxheap = []
